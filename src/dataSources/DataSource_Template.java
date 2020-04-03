@@ -1,4 +1,5 @@
 package dataSources;
+//import player.Player;
 
 public class DataSource_Template {
 
@@ -7,7 +8,7 @@ public class DataSource_Template {
     private int dataPerSecond;
     private int requiredData;
     private int initialCost;
-    private int currentCost;
+    private static int currentCost;
     private double costIncrease;
     private double dataIncrease;
     private int sourceAmountOwned;
@@ -32,7 +33,7 @@ public class DataSource_Template {
         return initialCost;
     }
 
-    public int getCurrentCost() {
+    public static int getCurrentCost() {
         return currentCost;
     }
 
@@ -74,7 +75,7 @@ public class DataSource_Template {
             costIncrease += 1.00;
         }
         currentCost = (int)(currentCost * costIncrease);
-        this.currentCost = currentCost;
+        DataSource_Template.currentCost = currentCost;
     }
 
     public void increaseDataPerSecond() {
@@ -84,7 +85,7 @@ public class DataSource_Template {
     }
 
     public boolean toggleVisibility(int dataAmount) {
-        if (dataAmount >= requiredData) {
+        if (player.Player.getDataAmount() >= requiredData) {
             return true;
         } else {
             return false;
@@ -93,7 +94,8 @@ public class DataSource_Template {
     }
 
     public void collectDataPerSecond(int dataPerSecond) {
-        dataAmount = dataAmount + dataPerSecond;
+    	int dataAmount = player.Player.getDataAmount();
+    	dataAmount = dataAmount + dataPerSecond;
     }
 
 }
