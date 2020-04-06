@@ -6,24 +6,24 @@ public class Buyers_Template
 {
 	private String name;
 	private int level;
-	private int preis;
-	private int gewinn;
+	private int price;
+	private int value;
 	
-	public Datenkauf(String name, int preis, int gewinn)
+	public Buyers_Template(String name, int price, int value)
 	{
 		this.name = name;
-		this.level = 1;
-		this.preis = preis;
-		this.gewinn = gewinn;
+		this.level = 0;
+		this.price = price;
+		this.value = value;
 	}
 	public void kauf()
 	{
-		if(dataAmount >= preis)
+		if(player.Player.getDataAmount() >= price)
 		{
 			level = level + 1;
-			dataAmount = dataAmount - preis;
-			preis = preis * 2;
-			amountOfMoney = amountOfMoney + gewinn;
+			player.Player.setDataAmount(player.Player.getDataAmount() - price);
+			price = price * 2;
+			player.Player.setMoneyAmount(player.Player.getMoneyAmount() + value);
 		}	
 	}
 }
