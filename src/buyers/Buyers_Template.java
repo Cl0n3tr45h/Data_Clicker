@@ -4,7 +4,7 @@ import player.Player;
 
 public class Buyers_Template 
 {
-	private String name;
+	private static String name;
 	private int level;
 	private int price;
 	private int value;
@@ -16,7 +16,11 @@ public class Buyers_Template
 		this.price = price;
 		this.value = value;
 	}
-	public void kauf()
+	public static String getName()
+	{
+		return name;
+	}
+	public void buy()
 	{
 		if(player.Player.getDataAmount() >= price)
 		{

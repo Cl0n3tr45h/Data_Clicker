@@ -12,10 +12,12 @@ import java.awt.FlowLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import player.Player;
+import buyers.Buyers_Template;
 
 public class GUI {
 
 	private JFrame frame;
+	private static  Buyers_Template mustermann;
 
 	/**
 	 * Launch the application.
@@ -31,6 +33,7 @@ public class GUI {
 				}
 			}
 		});
+		 mustermann = new  Buyers_Template("Max Mustermann", 10, 50);
 	}
 
 	/**
@@ -82,8 +85,16 @@ public class GUI {
 		JPanel buyersPanel = new JPanel();
 		frame.getContentPane().add(buyersPanel, BorderLayout.WEST);
 		
-		JButton btnNewButton = new JButton("New button");
-		buyersPanel.add(btnNewButton);
+		JButton buyer1 = new JButton(mustermann.getName());
+		buyersPanel.add(buyer1);
+		buyer1.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				mustermann.buy();
+				playerRessources.setText("Data: "+player.Player.getDataAmount()+" Money: "+player.Player.getMoneyAmount());
+			}
+		});
 		
 		JButton btnNewButton_1 = new JButton("New button");
 		buyersPanel.add(btnNewButton_1);
